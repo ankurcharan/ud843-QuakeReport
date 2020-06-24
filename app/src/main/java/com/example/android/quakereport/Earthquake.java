@@ -23,4 +23,13 @@ public class Earthquake {
     public String getDate() {
         return date;
     }
+
+    @Override
+    public String toString() {
+        return "Earthquake{" +
+                "magnitude='" + magnitude + '\'' +
+                ", location='" + location + '\'' +
+                ", date='" + date + '\'' +
+                '}';
+    }
 }
