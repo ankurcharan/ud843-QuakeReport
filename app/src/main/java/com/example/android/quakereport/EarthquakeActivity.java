@@ -31,16 +31,6 @@ public class EarthquakeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.earthquake_activity);
 
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        QueryUtils.extractEarthquakes();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-
 
         // Create a fake list of earthquake locations.
         ArrayList<Earthquake> earthquakes = QueryUtils.extractEarthquakes();
