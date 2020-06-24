@@ -4,12 +4,12 @@ public class Earthquake {
 
     private String magnitude;
     private String location;
-    private String date;
+    private Long timeInMs;
 
-    public Earthquake(String magnitude, String location, String date) {
+    public Earthquake(String magnitude, String location, Long timeInMs) {
         this.magnitude = magnitude;
         this.location = location;
-        this.date = date;
+        this.timeInMs = timeInMs;
     }
 
     public String getMagnitude() {
@@ -20,8 +20,8 @@ public class Earthquake {
         return location;
     }
 
-    public String getDate() {
-        return date;
+    public Long getTimeInMs() {
+        return timeInMs;
     }
 
     @Override
@@ -29,7 +29,7 @@ public class Earthquake {
         return "Earthquake{" +
                 "magnitude='" + magnitude + '\'' +
                 ", location='" + location + '\'' +
-                ", date='" + date + '\'' +
+                ", timeInMs=" + timeInMs +
                 '}';
     }
 }
