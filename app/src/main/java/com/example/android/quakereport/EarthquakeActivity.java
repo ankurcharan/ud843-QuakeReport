@@ -141,6 +141,11 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderManag
                 getString(R.string.settings_limit_default)
         );
 
+        String orderBy = sharedPreferences.getString(
+                getString(R.string.settings_order_by_key),
+                getString(R.string.settings_order_by_default)
+        );
+
         Uri baseUri = Uri.parse(USGS_REQUEST_URL);
 
         Uri.Builder uriBuilder = baseUri.buildUpon();
@@ -148,7 +153,7 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderManag
         uriBuilder.appendQueryParameter("format", "geojson");
         uriBuilder.appendQueryParameter("limit", limit);
         uriBuilder.appendQueryParameter("minmag", minMagnitude);
-        uriBuilder.appendQueryParameter("orderby", "time");
+        uriBuilder.appendQueryParameter("orderby", orderBy);
 
         // Create a new loader for the given URL
         return new EarthquakeLoader(this, uriBuilder.toString());
