@@ -112,18 +112,24 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderManag
     @Override
     public void onLoadFinished(Loader<List<Earthquake>> loader, List<Earthquake> earthquakes) {
 
-        // Clear the adapter of previous earthquake data
-        adapter.clear();
+        // Hide loading indicator because the data has been loaded
+        View loadingIndicator = findViewById(R.id.loading_indicator);
+        loadingIndicator.setVisibility(View.GONE);
 
         // Set empty state text to display "No earthquakes found."
         emptyStateTextView.setText(R.string.no_earthquakes);
+
+        // Clear the adapter of previous earthquake data
+        adapter.clear();
 
         // If there is a valid list of {@link Earthquake}s, then add them to the adapter's
         // data set. This will trigger the ListView to update.
         if(earthquakes != null && !earthquakes.isEmpty()) {
 
-            // debug msg
-            Log.d(LOG_TAG, "Load finish " + earthquakes.toString());
+            // info msg
+            Log.i(LOG_TAG, "Load finish " + earthquakes.toString());
+
+            // comment to simulate as if no data came from API to see no earthquake found msg
             adapter.addAll(earthquakes);
         }
     }
