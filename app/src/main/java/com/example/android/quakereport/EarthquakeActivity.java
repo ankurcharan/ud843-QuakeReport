@@ -27,6 +27,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,6 +48,9 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderManag
     /** URL for earthquake data from the USGS dataset */
     private static final String USGS_REQUEST_URL =
             "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&orderby=time&minmag=6&limit=10";
+
+    /** TextView that is displayed when the list is empty */
+    private TextView emptyStateTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +85,13 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderManag
             }
         });
 
+        /**
+         * to set empty earthquakes
+         */
+        emptyStateTextView = (TextView) findViewById(R.id.empty_view);
+        earthquakeListView.setEmptyView(emptyStateTextView);
+
+
         // Get a reference to the LoaderManager, in order to interact with loaders.
         LoaderManager loaderManager = getLoaderManager();
 
@@ -104,12 +115,15 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderManag
         // Clear the adapter of previous earthquake data
         adapter.clear();
 
+        // Set empty state text to display "No earthquakes found."
+        emptyStateTextView.setText(R.string.no_earthquakes);
+
         // If there is a valid list of {@link Earthquake}s, then add them to the adapter's
         // data set. This will trigger the ListView to update.
         if(earthquakes != null && !earthquakes.isEmpty()) {
 
             // debug msg
-            Log.d(LOG_TAG, "load finish " + earthquakes.toString());
+            Log.d(LOG_TAG, "Load finish " + earthquakes.toString());
             adapter.addAll(earthquakes);
         }
     }
