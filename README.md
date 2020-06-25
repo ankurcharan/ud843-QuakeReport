@@ -1,8 +1,14 @@
 Quake Report App
 ===================================
 
-This app displays a list of recent earthquakes in the world
-from the U.S. Geological Survey (USGS) organization.
+- This app displays a list of recent earthquakes in the world from the U.S. Geological Survey (USGS) organization.   
+-  JSON Parsing is done using JSONObject class.   
+- USGS API is consumed using Http request to get the earthquake data.   
+- API request is made using Threads.   
+- Loader is used to get the data from API (shifted from AsyncTask) to improve memory usage.   
+- Preferences are used to get let the user change the settings for the app.   
+   
+**Ankur Charan**
 
 Used in a Udacity course in the Beginning Android Nanodegree.
 
